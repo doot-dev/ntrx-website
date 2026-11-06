@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useGsap } from "@/hooks/useGsap";
 
 const TAG_IMG =
@@ -74,15 +75,17 @@ export const NtrxPayScene = () => {
             </div>
             <figure data-tag data-testid="ntrx-pay-visual" className="relative will-change-transform">
               <div className="absolute inset-0 studio-glow" aria-hidden="true" />
-              <img
+              <Image
                 src={TAG_IMG}
                 alt="Concept visual of the compact NTRX Pay NFC tag"
+                width={320}
+                height={320}
+                sizes="(min-width: 640px) 320px, 60vw"
                 className="w-[60vw] max-w-[280px] sm:max-w-[320px] aspect-square object-cover rounded-full"
                 style={{
                   maskImage: "radial-gradient(circle at 50% 50%, black 55%, transparent 72%)",
                   WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 55%, transparent 72%)",
                 }}
-                loading="lazy"
               />
               <figcaption className="mt-6 text-center text-[10px] tracking-[0.35em] uppercase text-zinc-600">
                 Concept visual
@@ -92,11 +95,13 @@ export const NtrxPayScene = () => {
 
           {/* attachment concept */}
           <figure data-attach data-testid="ntrx-pay-attach" className="relative max-w-sm">
-            <img
+            <Image
               src={STRAP_IMG}
               alt="Concept visual of the NTRX Pay tag attached to an everyday accessory"
+              width={384}
+              height={288}
+              sizes="(min-width: 640px) 384px, 100vw"
               className="w-full aspect-[4/3] object-cover rounded-2xl opacity-80"
-              loading="lazy"
             />
             <figcaption className="mt-5">
               <span className="block font-display text-xl sm:text-2xl font-light text-white">

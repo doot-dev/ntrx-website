@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useGsap } from "@/hooks/useGsap";
 
 const GLASSES_IMG =
@@ -80,15 +81,17 @@ export const NtrxCScene = () => {
         <div className="lg:w-1/2 order-1 lg:order-2 relative flex items-center justify-center">
           <div className="absolute inset-0 studio-glow" aria-hidden="true" />
           <figure data-product data-testid="ntrx-c-visual" className="relative will-change-transform">
-            <img
+            <Image
               src={GLASSES_IMG}
               alt="Concept visual of sleek smart glasses suspended in darkness with studio reflections"
+              width={520}
+              height={520}
+              sizes="(min-width: 1024px) 520px, (min-width: 540px) 420px, 78vw"
               className="w-[78vw] max-w-[420px] lg:max-w-[520px] aspect-square object-cover rounded-full"
               style={{
                 maskImage: "radial-gradient(circle at 50% 50%, black 55%, transparent 72%)",
                 WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 55%, transparent 72%)",
               }}
-              loading="lazy"
             />
             <figcaption className="mt-6 text-center text-[10px] tracking-[0.35em] uppercase text-zinc-600">
               Concept visual

@@ -7,6 +7,11 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+// Font swap can change section heights after first paint; re-measure pins once fonts land.
+if (typeof document !== "undefined") {
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+}
+
 type Setup = (el: HTMLElement, g: typeof gsap, st: typeof ScrollTrigger) => void;
 
 /**

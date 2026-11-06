@@ -31,6 +31,15 @@
 
 /* ---------- NTRX keynote primitives ---------- */
 
+/* hero starts hidden only when JS + motion are on; GSAP's inline styles take over */
+.motion [data-hero-light],
+.motion [data-hero-line-1],
+.motion [data-hero-line-2],
+.motion [data-hero-tagline],
+.motion [data-hero-cue] {
+  opacity: 0;
+}
+
 /* masked line reveal */
 .reveal-mask {
   overflow: hidden;

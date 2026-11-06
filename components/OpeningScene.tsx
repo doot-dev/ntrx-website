@@ -3,7 +3,7 @@
 import { useGsap } from "@/hooks/useGsap";
 
 const HERO_IMG =
-  "https://images.unsplash.com/photo-1632059368252-be6d65abc4e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwyfHxkYXJrJTIwbWluaW1hbCUyMHNsZWVrJTIwdGVjaG5vbG9neSUyMG9iamVjdCUyMHN0dWRpbyUyMGxpZ2h0aW5nfGVufDB8fHx8MTc5Mzk1MzgxNXww&ixlib=rb-4.1.0&q=85";
+  "https://images.unsplash.com/photo-1632059368252-be6d65abc4e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwyfHxkYXJrJTIwbWluaW1hbCUyMHNsZWVrJTIwdGVjaG5vbG9neSUyMG9iamVjdCUyMHN0dWRpbyUyMGxpZ2h0aW5nfGVufDB8fHx8MTc5Mzk1MzgxNXww&ixlib=rb-4.1.0&q=85&w=1920&auto=format";
 
 export const OpeningScene = () => {
   const ref = useGsap((el, gsap) => {
