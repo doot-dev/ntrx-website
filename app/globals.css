@@ -70,6 +70,40 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* custom cursor (components/Cursor.tsx); class set only on fine pointers */
+.custom-cursor,
+.custom-cursor * {
+  cursor: none !important;
+}
+.cursor-dot,
+.cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  border-radius: 9999px;
+  opacity: 0;
+  mix-blend-mode: difference;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #fff;
+}
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid rgb(255 255 255 / 0.6);
+  transition: scale 0.3s ease, background-color 0.3s ease;
+}
+.cursor-ring.is-link {
+  scale: 1.8;
+  background-color: rgb(255 255 255 / 0.12);
+}
+
 /* NFC pulse — restrained, silver-white */
 @keyframes nfc-pulse {
   0% {
