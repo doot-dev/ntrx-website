@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-/* Tokens. `font-display` / `font-sans` utilities come from these. Scene primitives
-   (.reveal-mask, .studio-glow, .nfc-ring, …) arrive with the Phase 2 port. */
+/* Tokens. `font-display` / `font-sans` utilities come from these. */
 @theme inline {
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: var(--font-outfit), -apple-system, BlinkMacSystemFont, sans-serif;
@@ -30,8 +29,91 @@
   }
 }
 
+/* ---------- NTRX keynote primitives ---------- */
+
+/* hero starts hidden only when JS + motion are on; GSAP's inline styles take over */
+.motion [data-hero-light],
+.motion [data-hero-line-1],
+.motion [data-hero-line-2],
+.motion [data-hero-tagline],
+.motion [data-hero-cue] {
+  opacity: 0;
+}
+
+/* masked line reveal */
+.reveal-mask {
+  overflow: hidden;
+  display: block;
+}
+
+/* subtle studio radial glow behind products */
+.studio-glow {
+  background: radial-gradient(ellipse 60% 45% at 50% 45%, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 45%, transparent 70%);
+}
+
+.studio-glow-strong {
+  background: radial-gradient(ellipse 55% 42% at 50% 50%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 72%);
+}
+
+/* fine film grain */
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* NFC pulse — restrained, silver-white */
+@keyframes nfc-pulse {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.nfc-ring {
+  position: absolute;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  animation: nfc-pulse 3.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+.nfc-ring-2 {
+  animation-delay: 1.1s;
+}
+
+.nfc-ring-3 {
+  animation-delay: 2.2s;
+}
+
+@keyframes cue-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.cue-drift {
+  animation: cue-drift 2.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .nfc-ring,
+  .cue-drift {
+    animation: none !important;
   }
 }

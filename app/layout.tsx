@@ -49,9 +49,18 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+// Pre-hides the hero (see .motion in globals.css) before first paint so the GSAP intro
+// doesn't flash server-rendered text. Skipped under reduced motion; the class drops after
+// 4s so a failed JS bundle can never leave the hero invisible.
+const motionScript = `if(matchMedia("(prefers-reduced-motion: no-preference)").matches){var d=document.documentElement;d.classList.add("motion");setTimeout(function(){d.classList.remove("motion")},4000)}`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} antialiased`}>
+    // suppressHydrationWarning: motionScript edits <html> class before React hydrates
+    <html lang="en" className={`${inter.variable} ${outfit.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: motionScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );

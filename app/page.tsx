@@ -1,6 +1,12 @@
 import { site } from "@/lib/site";
+import { NavBar } from "@/components/NavBar";
+import { OpeningScene } from "@/components/OpeningScene";
+import { NtrxCScene } from "@/components/NtrxCScene";
+import { NtrxPayScene } from "@/components/NtrxPayScene";
+import { PhilosophyScene } from "@/components/PhilosophyScene";
+import { FinaleScene } from "@/components/FinaleScene";
+import { CopyrightYear } from "@/components/CopyrightYear";
 
-// ponytail: placeholder hero; Phase 2 swaps in the five ported scenes.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -26,21 +32,21 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+    <div data-testid="landing-page" className="relative bg-black min-h-screen text-white">
       <script
         type="application/ld+json"
         // escape "<" so the JSON can never close the script tag
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
-      <h1 className="text-[18vw] font-medium leading-none tracking-[0.08em] sm:text-[14vw] lg:text-[10rem]">
-        {site.name}
-      </h1>
-      <p className="mt-8 font-display text-3xl font-light tracking-tight text-zinc-300 sm:text-5xl">
-        {site.tagline}
-      </p>
-      <p className="mt-8 text-base font-light tracking-wide text-zinc-500 sm:text-lg">
-        Intelligence You Can Wear.
-      </p>
-    </main>
+      <div className="grain-overlay" aria-hidden="true" />
+      <NavBar />
+      <main>
+        <OpeningScene />
+        <NtrxCScene />
+        <NtrxPayScene />
+        <PhilosophyScene />
+        <FinaleScene year={<CopyrightYear />} />
+      </main>
+    </div>
   );
 }
