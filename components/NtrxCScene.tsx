@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { useGsap } from "@/hooks/useGsap";
 
-const GLASSES_IMG =
-  "https://images.unsplash.com/photo-1654257650833-b7398115275a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHwyfHxzbGVlayUyMHN1bmdsYXNzZXMlMjBwcm9kdWN0JTIwJTIwc2hvdCUyMGJsYWNrJTIwYmFja2dyb3VuZCUyMGNpbmVtYXRpY3xlbnwwfHx8fDE3OTM5NTM4MTV8MA&ixlib=rb-4.1.0&q=85";
+const GLASSES_IMG = "/images/glasses.jpg";
 
 export const NtrxCScene = () => {
   const ref = useGsap((el, gsap) => {
@@ -45,7 +44,7 @@ export const NtrxCScene = () => {
         {/* typography */}
         <div className="lg:w-1/2 order-2 lg:order-1">
           <span className="reveal-mask">
-            <span data-c-headline className="block text-[11px] tracking-[0.45em] uppercase text-zinc-500 mb-6">
+            <span data-c-headline className="block text-[11px] tracking-[0.45em] uppercase text-zinc-400 mb-6">
               NTRX-C
             </span>
           </span>
@@ -93,7 +92,7 @@ export const NtrxCScene = () => {
                 WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 55%, transparent 72%)",
               }}
             />
-            <figcaption className="mt-6 text-center text-[10px] tracking-[0.35em] uppercase text-zinc-600">
+            <figcaption className="mt-6 text-center text-[10px] tracking-[0.35em] uppercase text-zinc-400">
               Concept visual
             </figcaption>
           </figure>

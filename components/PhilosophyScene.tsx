@@ -60,7 +60,7 @@ export const PhilosophyScene = () => {
             <div key={v.title} data-testid={`philosophy-value-${v.title.toLowerCase().replace(" ", "-")}`}>
               <h3 className="font-display text-lg font-medium tracking-wide text-black">{v.title}</h3>
               <div className="mx-auto mt-4 h-px w-10 bg-zinc-300" aria-hidden="true" />
-              <p className="mt-4 text-base font-light leading-relaxed text-zinc-500">{v.text}</p>
+              <p className="mt-4 text-base font-light leading-relaxed text-zinc-400">{v.text}</p>
             </div>
           ))}
         </div>

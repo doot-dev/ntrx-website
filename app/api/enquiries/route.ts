@@ -40,7 +40,25 @@ function parse(body: unknown): { data: Record<Key, string> } | { issues: Issue[]
 
 const toJson = ({ createdAt, ...rest }: Enquiry) => ({ ...rest, created_at: createdAt.toISOString() });
 
+// ponytail: per-instance memory, so on serverless it only stops bursts hitting one instance.
+// Add a Vercel WAF rate-limit rule on /api/enquiries for a global limit.
+const WINDOW_MS = 10 * 60_000;
+const MAX_PER_WINDOW = 5;
+const hits = new Map<string, number[]>();
+
+function rateLimited(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 10_000) hits.clear(); // bound memory
+  return recent.length > MAX_PER_WINDOW;
+}
+
 export async function POST(request: Request) {
+  if (rateLimited(request)) return Response.json({ error: "too many requests" }, { status: 429 });
+
   const text = await request.text();
   if (text.length > MAX_BODY) return Response.json({ error: "body too large" }, { status: 413 });
 
