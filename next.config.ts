@@ -12,10 +12,6 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
-  images: {
-    // object form: new URL() would pin `search` to "" and reject Unsplash's query params
-    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com", pathname: "/**" }],
-  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

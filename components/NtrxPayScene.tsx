@@ -3,10 +3,8 @@
 import Image from "next/image";
 import { useGsap } from "@/hooks/useGsap";
 
-const TAG_IMG =
-  "https://images.unsplash.com/photo-1785771922765-af83ff0cc254?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwYmxhY2slMjBtYWNybyUyMHRlY2glMjBwcm9kdWN0JTIwc3R1ZGlvJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzkzOTUzODA5fDA&ixlib=rb-4.1.0&q=85";
-const STRAP_IMG =
-  "https://images.unsplash.com/photo-1675676708853-841f9566bb6d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHw0fHxibGFjayUyMG1pbmltYWxpc3QlMjBicmFjZWxldCUyMHByb2R1Y3QlMjBzaG90JTIwZGFya3xlbnwwfHx8fDE3OTM5NTM4MTV8MA&ixlib=rb-4.1.0&q=85";
+const TAG_IMG = "/images/nfc-tag.jpg";
+const STRAP_IMG = "/images/strap.jpg";
 
 export const NtrxPayScene = () => {
   const ref = useGsap((el, gsap) => {
@@ -51,7 +49,7 @@ export const NtrxPayScene = () => {
     >
       <div className="min-h-screen flex flex-col items-center justify-center max-w-[1400px] mx-auto px-6 sm:px-10 py-28">
         <span className="reveal-mask">
-          <span data-pay-headline className="block text-[11px] tracking-[0.45em] uppercase text-zinc-500 mb-6 text-center">
+          <span data-pay-headline className="block text-[11px] tracking-[0.45em] uppercase text-zinc-400 mb-6 text-center">
             NTRX Pay
           </span>
         </span>
@@ -87,7 +85,7 @@ export const NtrxPayScene = () => {
                   WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 55%, transparent 72%)",
                 }}
               />
-              <figcaption className="mt-6 text-center text-[10px] tracking-[0.35em] uppercase text-zinc-600">
+              <figcaption className="mt-6 text-center text-[10px] tracking-[0.35em] uppercase text-zinc-400">
                 Concept visual
               </figcaption>
             </figure>
@@ -111,7 +109,7 @@ export const NtrxPayScene = () => {
                 A compact NFC-enabled tag that attaches to the accessories you
                 already own — bracelets, rings, watch straps, keychains.
               </span>
-              <span className="mt-3 block text-xs tracking-wide text-zinc-600">
+              <span className="mt-3 block text-xs tracking-wide text-zinc-400">
                 Concept visual. NTRX does not manufacture jewellery, watches or
                 fashion accessories.
               </span>

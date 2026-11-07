@@ -2,8 +2,7 @@
 
 import { useGsap } from "@/hooks/useGsap";
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1632059368252-be6d65abc4e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwyfHxkYXJrJTIwbWluaW1hbCUyMHNsZWVrJTIwdGVjaG5vbG9neSUyMG9iamVjdCUyMHN0dWRpbyUyMGxpZ2h0aW5nfGVufDB8fHx8MTc5Mzk1MzgxNXww&ixlib=rb-4.1.0&q=85&w=1920&auto=format";
+const HERO_IMG = "/images/hero.jpg";
 
 export const OpeningScene = () => {
   const ref = useGsap((el, gsap) => {
@@ -82,7 +81,7 @@ export const OpeningScene = () => {
         <p
           data-hero-tagline
           data-testid="hero-subline"
-          className="mt-8 sm:mt-10 text-base sm:text-lg font-light tracking-wide text-zinc-500 max-w-md mx-auto"
+          className="mt-8 sm:mt-10 text-base sm:text-lg font-light tracking-wide text-zinc-400 max-w-md mx-auto"
         >
           Intelligence You Can Wear.
         </p>
@@ -92,7 +91,7 @@ export const OpeningScene = () => {
         href="#ntrx-c"
         data-hero-cue
         data-testid="hero-scroll-cue"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-zinc-500 hover:text-white transition-colors"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-zinc-400 hover:text-white transition-colors"
         aria-label="Scroll to NTRX-C"
       >
         <span className="text-[10px] tracking-[0.4em] uppercase">Scroll</span>

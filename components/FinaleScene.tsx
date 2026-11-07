@@ -56,12 +56,12 @@ export const FinaleScene = ({ year }: { year: ReactNode }) => {
         <div data-fin-items className="mt-16 sm:mt-20 flex flex-col sm:flex-row items-center gap-10 sm:gap-20">
           <div data-testid="finale-product-ntrxc">
             <div className="font-display text-xl font-medium tracking-wide text-white">NTRX-C</div>
-            <div className="mt-2 text-sm font-light text-zinc-500">Intelligence Beyond Vision.</div>
+            <div className="mt-2 text-sm font-light text-zinc-400">Intelligence Beyond Vision.</div>
           </div>
           <div className="hidden sm:block h-12 w-px bg-zinc-800" aria-hidden="true" />
           <div data-testid="finale-product-ntrxpay">
             <div className="font-display text-xl font-medium tracking-wide text-white">NTRX Pay</div>
-            <div className="mt-2 text-sm font-light text-zinc-500">Wear It. Tap It. Pay.</div>
+            <div className="mt-2 text-sm font-light text-zinc-400">Wear It. Tap It. Pay.</div>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ export const FinaleScene = ({ year }: { year: ReactNode }) => {
           data-testid="contact-email-link"
           className="group mt-20 inline-flex flex-col items-center gap-3"
         >
-          <span className="text-[11px] tracking-[0.45em] uppercase text-zinc-500">Begin the conversation</span>
+          <span className="text-[11px] tracking-[0.45em] uppercase text-zinc-400">Begin the conversation</span>
           <span className="font-display text-2xl sm:text-4xl font-light text-white group-hover:text-zinc-300 transition-colors duration-300 border-b border-zinc-700 group-hover:border-white pb-2">
             {CONTACT_EMAIL}
           </span>
@@ -80,14 +80,14 @@ export const FinaleScene = ({ year }: { year: ReactNode }) => {
 
       <footer data-testid="footer" className="relative border-t border-white/[0.06]">
         <div className="max-w-[1400px] mx-auto px-6 sm:px-10 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-display text-sm tracking-[0.35em] text-zinc-500">NTRX</span>
-          <span className="text-xs font-light text-zinc-600">
+          <span className="font-display text-sm tracking-[0.35em] text-zinc-400">NTRX</span>
+          <span className="text-xs font-light text-zinc-400">
             &copy; {year} NTRX. Intelligence You Can Wear.
           </span>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             data-testid="footer-email-link"
-            className="text-xs font-light text-zinc-500 hover:text-white transition-colors"
+            className="text-xs font-light text-zinc-400 hover:text-white transition-colors"
           >
             {CONTACT_EMAIL}
           </a>
