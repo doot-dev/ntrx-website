@@ -45,6 +45,11 @@
   overflow: hidden;
   display: block;
 }
+/* leading-none headings put descenders (g, y, p) outside their box, where the mask clips
+   them. Padding in the heading's own em gives them room. */
+.reveal-mask > * {
+  padding-bottom: 0.18em;
+}
 
 /* subtle studio radial glow behind products */
 .studio-glow {
