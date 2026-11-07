@@ -6,6 +6,8 @@ import { NtrxPayScene } from "@/components/NtrxPayScene";
 import { PhilosophyScene } from "@/components/PhilosophyScene";
 import { FinaleScene } from "@/components/FinaleScene";
 import { CopyrightYear } from "@/components/CopyrightYear";
+import { BackgroundGraph } from "@/components/BackgroundGraph";
+import { Cursor } from "@/components/Cursor";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -39,6 +41,8 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <div className="grain-overlay" aria-hidden="true" />
+      <BackgroundGraph />
+      <Cursor />
       <NavBar />
       <main>
         <OpeningScene />
