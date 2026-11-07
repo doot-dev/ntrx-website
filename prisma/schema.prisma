@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// Ported from the FastAPI `enquiries` collection; limits match its Pydantic model.
+model Enquiry {
+  id        String   @id @default(uuid()) @db.Char(36)
+  name      String   @db.VarChar(120)
+  company   String   @default("") @db.VarChar(160)
+  email     String   @db.VarChar(254)
+  interest  String   @default("general") @db.VarChar(60)
+  message   String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt(sort: Desc)])
+  @@map("enquiries")
+}
