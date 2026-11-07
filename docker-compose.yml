@@ -1,0 +1,38 @@
+# Local stack: MySQL + one-shot migration + the site. `docker compose up --build`
+# Set DATABASE_URL (shell or .env) to use a real database instead of the `db` service.
+x-database-url: &database-url
+  DATABASE_URL: ${DATABASE_URL:-mysql://ntrx:ntrx-local@db:3306/ntrx?allowPublicKeyRetrieval=true}
+
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ntrx
+      MYSQL_USER: ntrx
+      MYSQL_PASSWORD: ntrx-local
+      MYSQL_ROOT_PASSWORD: ntrx-root-local
+    ports: ["127.0.0.1:3307:3306"]
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./docker/mysql-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-untrx", "-pntrx-local"]
+      interval: 3s
+      retries: 20
+
+  migrate:
+    build: { context: ., target: deps }
+    command: ["npx", "prisma", "migrate", "deploy"]
+    environment: *database-url
+    depends_on: { db: { condition: service_healthy } }
+
+  web:
+    build: .
+    environment:
+      <<: *database-url
+      ADMIN_TOKEN: ${ADMIN_TOKEN:-}
+    ports: ["3000:3000"]
+    depends_on: { migrate: { condition: service_completed_successfully } }
+
+volumes:
+  db-data:
